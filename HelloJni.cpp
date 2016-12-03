@@ -21,6 +21,15 @@ JNIEXPORT void JNICALL Java_HelloJni_s(JNIEnv* env, jobject, jstring s) {
 	printf("C s1 %s\n", s1);
 }
 
+JNIEXPORT void JNICALL Java_HelloJni_array(JNIEnv* env, jobject obj, jintArray a) {
+	jint* ca = env->GetIntArrayElements(a, NULL);
+  jsize l = env->GetArrayLength(a);
+	printf("C l %d\n", l);
+  for (int i=0; i<l; i++) {
+		printf("C %d %d\n", i, ca[i]);
+  }
+}
+
 
 
 
