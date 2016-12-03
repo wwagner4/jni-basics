@@ -1,10 +1,9 @@
 all: libHelloJni.jnilib
 
 clean:
-	rm -f HelloJni.class  \
+	rm -f *.class  \
+	rm -f *.jnilib    \
 	rm -f HelloJni.h      \
-	rm -f HelloJni.o      \
-	rm -f libHelloJni.jnilib    \
 
 run: all
 	java -Djava.library.path=. HelloJni
