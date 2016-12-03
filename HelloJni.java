@@ -71,9 +71,10 @@ class C {
 
 	private int i = 100;
 	private String s = "String in java class C";
+	private int[] inta = {1, 3, 5};
 
 	public String toString() {
-		return "C[i=" + i + " s='"+ s + "']";
+		return "C[i=" + i + " s='"+ s + "' inta=" + Arrays.toString(inta) + "]";
 	}
 }	
 

@@ -27,22 +27,33 @@ JNIEXPORT void JNICALL Java_HelloJni_array(JNIEnv* env, jobject obj, jintArray a
   jsize l = env->GetArrayLength(a);
 	printf("C l %d\n", l);
   for (int i=0; i<l; i++) {
-		printf("C %d %d\n", i, ca[i]);
+		printf("C i[%d] %d\n", i, ca[i]);
   }
 }
 
 JNIEXPORT void JNICALL Java_HelloJni_obj(JNIEnv* env, jobject, jobject obj) {
 	jclass clazz = env->GetObjectClass(obj);
 	
+	// access integer value
 	jfieldID fid1 = env->GetFieldID(clazz, "i", "I");
 	jint i = env->GetIntField(obj, fid1);
-  printf("C, i %d\n", i);
+  printf("C C.i %d\n", i);
 
+	// access string
 	jfieldID fid2 = env->GetFieldID(clazz, "s", "Ljava/lang/String;");
 	jstring strObj = (jstring)env->GetObjectField(obj, fid2);
 	const char* cs = env->GetStringUTFChars(strObj, 0);
-	printf("C obj s %s\n", cs);
+	printf("C C.s %s\n", cs);
 	env->ReleaseStringUTFChars(strObj, cs);
+	
+	// access integer array
+	jfieldID fid3 = env->GetFieldID(clazz, "inta", "[I");
+	jintArray a = (jintArray)env->GetObjectField(obj, fid3);
+	jint* ca = env->GetIntArrayElements(a, 0);
+  jsize l = env->GetArrayLength(a);
+  for (int i=0; i<l; i++) {
+		printf("C C.inta[%d] %d\n", i, ca[i]);
+  }
 	
 }
 
