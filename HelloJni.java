@@ -69,7 +69,7 @@ public class HelloJni {
 
 class C {
 
-	int i = 100;
+	private int i = 100;
 
 	public String toString() {
 		return "C[i=" + i + "]";
