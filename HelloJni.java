@@ -17,9 +17,16 @@ public class HelloJni {
   	System.out.println("J r <- " + r);
   	System.out.println("-------------------------------------");
 
-  	System.out.println("J a -> 555");
-    h.a(555);
+		int i = 333;
+  	System.out.println("J a -> " + i);
+    h.a(i);
   	System.out.println("J a <- ");
+  	System.out.println("-------------------------------------");
+
+		String str = "Es war einmal und ist nicht mehr";
+  	System.out.println("J s -> " + str);
+    h.s(str);
+  	System.out.println("J s <- ");
   	System.out.println("-------------------------------------");
   }
 
@@ -28,6 +35,8 @@ public class HelloJni {
   public native int r();
   
   public native void a(int a);
-  
+
+  public native void s(String a);
+
   
 }
