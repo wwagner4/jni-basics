@@ -33,6 +33,9 @@ JNIEXPORT void JNICALL Java_HelloJni_array(JNIEnv* env, jobject obj, jintArray a
 
 JNIEXPORT void JNICALL Java_HelloJni_obj(JNIEnv* env, jobject, jobject obj) {
 	printf("C obj %p\n", obj);
+	jclass clazz = env->GetObjectClass(obj);
+	jfieldID fid1 = env->GetFieldID(clazz, "i", "I");
+	printf("C obj intFieldId %d\n", fid1);
 }
 
 

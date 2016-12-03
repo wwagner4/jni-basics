@@ -69,8 +69,10 @@ public class HelloJni {
 
 class C {
 
+	int i = 100;
+
 	public String toString() {
-		return "C[]";
+		return "C[i=" + i + "]";
 	}
 }	
 
