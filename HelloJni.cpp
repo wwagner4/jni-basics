@@ -31,6 +31,7 @@ JNIEXPORT void JNICALL Java_HelloJni_array(JNIEnv* env, jobject obj, jintArray a
   }
 }
 
+// Access the fields of an object
 JNIEXPORT void JNICALL Java_HelloJni_obj(JNIEnv* env, jobject, jobject obj) {
 	jclass clazz = env->GetObjectClass(obj);
 	
