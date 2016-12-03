@@ -17,9 +17,13 @@ JNIEXPORT void JNICALL Java_HelloJni_a(JNIEnv* env, jobject obj, jint a) {
 }
 
 JNIEXPORT void JNICALL Java_HelloJni_s(JNIEnv* env, jobject, jstring s) {
-	const char* s1 = env->GetStringUTFChars(s, 0);
-	printf("C s1 %s\n", s1);
-	env->ReleaseStringUTFChars(s, s1);
+	if (s != NULL) {
+		const char* s1 = env->GetStringUTFChars(s, 0);
+		printf("C s1 %s\n", s1);
+		env->ReleaseStringUTFChars(s, s1);
+	} else {
+		printf("C s1 null\n");
+	}
 }
 
 JNIEXPORT void JNICALL Java_HelloJni_array(JNIEnv* env, jobject obj, jintArray a) {
