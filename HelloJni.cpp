@@ -32,15 +32,18 @@ JNIEXPORT void JNICALL Java_HelloJni_array(JNIEnv* env, jobject obj, jintArray a
 }
 
 JNIEXPORT void JNICALL Java_HelloJni_obj(JNIEnv* env, jobject, jobject obj) {
-	printf("C obj %p\n", obj);
-	
 	jclass clazz = env->GetObjectClass(obj);
-	jfieldID fid1 = env->GetFieldID(clazz, "i", "I");
-	printf("C obj intFieldId %d\n", fid1);
 	
+	jfieldID fid1 = env->GetFieldID(clazz, "i", "I");
 	jint i = env->GetIntField(obj, fid1);
   printf("C, i %d\n", i);
 
+	jfieldID fid2 = env->GetFieldID(clazz, "s", "Ljava/lang/String;");
+	jstring strObj = (jstring)env->GetObjectField(obj, fid2);
+	const char* cs = env->GetStringUTFChars(strObj, 0);
+	printf("C obj s %s\n", cs);
+	env->ReleaseStringUTFChars(strObj, cs);
+	
 }
 
 

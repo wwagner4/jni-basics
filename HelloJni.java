@@ -70,9 +70,10 @@ public class HelloJni {
 class C {
 
 	private int i = 100;
+	private String s = "String in java class C";
 
 	public String toString() {
-		return "C[i=" + i + "]";
+		return "C[i=" + i + " s='"+ s + "']";
 	}
 }	
 
