@@ -37,7 +37,7 @@ public class HelloJni {
 			System.out.println("-------------------------------------");
 		}
 		{
-			int[] array = {2, 4, 6, 8};
+			int[] array = {111, 222, 333};
 			System.out.println("J array -> " + Arrays.toString(array));
 			h.array(array);
 			System.out.println("J array <- ");
@@ -71,7 +71,7 @@ class C {
 
 	private int i = 100;
 	private String s = "String in java class C";
-	private int[] inta = {1, 3, 5};
+	private int[] inta = {100, 200, 300};
 
 	public String toString() {
 		return "C[i=" + i + " s='"+ s + "' inta=" + Arrays.toString(inta) + "]";

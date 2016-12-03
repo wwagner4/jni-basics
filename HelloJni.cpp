@@ -23,12 +23,16 @@ JNIEXPORT void JNICALL Java_HelloJni_s(JNIEnv* env, jobject, jstring s) {
 }
 
 JNIEXPORT void JNICALL Java_HelloJni_array(JNIEnv* env, jobject obj, jintArray a) {
-	jint* ca = env->GetIntArrayElements(a, 0);
-  jsize l = env->GetArrayLength(a);
-	printf("C l %d\n", l);
-  for (int i=0; i<l; i++) {
-		printf("C i[%d] %d\n", i, ca[i]);
-  }
+	if (a != NULL) {
+		jint* ca = env->GetIntArrayElements(a, 0);
+	  jsize l = env->GetArrayLength(a);
+		printf("C l %d\n", l);
+	  for (int i=0; i<l; i++) {
+			printf("C a[%d] %d\n", i, ca[i]);
+	  }
+	} else {
+		printf("C a null\n");
+	}
 }
 
 // Access the fields of an object
@@ -50,11 +54,15 @@ JNIEXPORT void JNICALL Java_HelloJni_obj(JNIEnv* env, jobject, jobject obj) {
 	// access integer array
 	jfieldID fid3 = env->GetFieldID(clazz, "inta", "[I");
 	jintArray a = (jintArray)env->GetObjectField(obj, fid3);
-	jint* ca = env->GetIntArrayElements(a, 0);
-  jsize l = env->GetArrayLength(a);
-  for (int i=0; i<l; i++) {
-		printf("C C.inta[%d] %d\n", i, ca[i]);
-  }
+	if (a != NULL) {
+		jint* ca = env->GetIntArrayElements(a, 0);
+	  jsize l = env->GetArrayLength(a);
+	  for (int i=0; i<l; i++) {
+			printf("C C.inta[%d] %d\n", i, ca[i]);
+	  }
+	} else {
+		printf("C C.inta null\n");
+	}
 	
 }
 
