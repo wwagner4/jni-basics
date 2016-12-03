@@ -3,16 +3,16 @@
 #include <string.h>
 #include "HelloJni.h"
 
-JNIEXPORT void JNICALL Java_HelloJni_sayHello(JNIEnv *, jobject){
+JNIEXPORT void JNICALL Java_HelloJni_sayHello(JNIEnv* env, jobject obj){
 	printf("C Hello from cpp\n");
 }
 
-JNIEXPORT jint JNICALL Java_HelloJni_r (JNIEnv *, jobject) {
+JNIEXPORT jint JNICALL Java_HelloJni_r (JNIEnv* env, jobject obj) {
 	printf("C r\n");
 	return 111;	
 }	
 
-JNIEXPORT void JNICALL Java_HelloJni_a(JNIEnv *, jobject, jint a) {
+JNIEXPORT void JNICALL Java_HelloJni_a(JNIEnv* env, jobject obj, jint a) {
 	printf("C a %d\n", a);
 }
 
