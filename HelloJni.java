@@ -6,10 +6,19 @@ public class HelloJni {
   }
   
   public static void main(String... args) {
-    new HelloJni().sayHello();
+  	HelloJni h = new HelloJni();
+  	System.out.println("J sayHello ->");
+    h.sayHello();
+  	System.out.println("J sayHello <-");
+
+  	System.out.println("J sayHello ->");
+    int r = h.r();
+  	System.out.println("J sayHello <- " + r);
   }
 
   public native void sayHello();
+
+  public native int r();
   
   
 }
