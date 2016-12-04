@@ -1,0 +1,4 @@
+TODO
+
+- Speicherplatz freigeben
+- Referen auf Liste von Objekten
