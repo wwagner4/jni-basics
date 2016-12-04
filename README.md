@@ -12,3 +12,4 @@ Basic usage of JNI
 * Read objects of an array and their members
 * Read a list
 * Read a list containing polimorphic elements
+* Different platforms. Linux, Windows 
