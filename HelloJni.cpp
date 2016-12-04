@@ -3,6 +3,19 @@
 #include <string.h>
 #include "HelloJni.h"
 
+
+// Utillity function to output the java class 'D'
+void showD(JNIEnv* env, jobject obj) {
+	jclass clazz = env->GetObjectClass(obj);
+	
+	// access integer value
+	{
+		jfieldID fid1 = env->GetFieldID(clazz, "i", "I");
+		jint i = env->GetIntField(obj, fid1);
+	  printf("   C D.i %d\n", i);
+  }
+
+}
 // Utillity function to output the java class 'C'
 void showC(JNIEnv* env, jobject obj) {
 	jclass clazz = env->GetObjectClass(obj);
@@ -42,7 +55,7 @@ void showC(JNIEnv* env, jobject obj) {
 		printf("l=%d\n", l);
 	  for (int i=0; i<l; i++) {
 			jobject oae = env->GetObjectArrayElement(joa, i);
-			printf("C C.da[%d] %p\n", i, oae);
+			showD(env, oae);
 	  }
 	}
 }
