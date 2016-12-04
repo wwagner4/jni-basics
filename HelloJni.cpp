@@ -125,9 +125,9 @@ JNIEXPORT void JNICALL Java_HelloJni_lp(JNIEnv* env, jobject, jobject lObj) {
     jclass iClazz = env->GetObjectClass(dObj);
     jmethodID descMid = env->GetMethodID(iClazz, "desc", "()Ljava/lang/String;");
 
-	  jstring strObj = (jstring)env->CallObjectMethod(dObj, descMid);
-	  const char* cs = env->GetStringUTFChars(strObj, 0);
-	  printf("C l I.desc %s\n", cs);
-	  env->ReleaseStringUTFChars(strObj, cs);
+    jstring strObj = (jstring)env->CallObjectMethod(dObj, descMid);
+    const char* cs = env->GetStringUTFChars(strObj, 0);
+    printf("C l I.desc %s\n", cs);
+    env->ReleaseStringUTFChars(strObj, cs);
   }  
 }
