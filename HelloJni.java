@@ -71,10 +71,24 @@ class C {
 
 	private int i = 100;
 	private String s = "String in java class C";
-	private int[] inta = {100, 200, 300};
+	private int[] inta = {100, 200};
+	private D[] da = {new D(3), new D(2), new D(1)};
 
 	public String toString() {
-		return "C[i=" + i + " s='"+ s + "' inta=" + Arrays.toString(inta) + "]";
+		return "C[i=" + i + " s='"+ s + "' inta=" + Arrays.toString(inta) + 
+			" da=" + Arrays.toString(da) + "]";
 	}
 }	
 
+class D {
+	int i;
+	
+	D(int i) {
+		this.i = i;
+	}
+	
+	public String toString() {
+		return "D[i=" + i + "]";
+	}
+		
+}

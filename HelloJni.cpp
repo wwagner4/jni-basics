@@ -61,6 +61,7 @@ JNIEXPORT void JNICALL Java_HelloJni_obj(JNIEnv* env, jobject, jobject obj) {
 	if (a != NULL) {
 		jint* ca = env->GetIntArrayElements(a, 0);
 	  jsize l = env->GetArrayLength(a);
+		printf("l=%d\n", l);
 	  for (int i=0; i<l; i++) {
 			printf("C C.inta[%d] %d\n", i, ca[i]);
 	  }
@@ -68,10 +69,16 @@ JNIEXPORT void JNICALL Java_HelloJni_obj(JNIEnv* env, jobject, jobject obj) {
 		printf("C C.inta null\n");
 	}
 	
+	// acces object array. No nullcheck
+	{
+		jfieldID fid4 = env->GetFieldID(clazz, "da", "[LD;");
+		jobjectArray joa = (jobjectArray)env->GetObjectField(obj, fid4);
+			
+	  jsize l = env->GetArrayLength(joa);
+		printf("l=%d\n", l);
+	  for (int i=0; i<l; i++) {
+			jobject oae = env->GetObjectArrayElement(joa, i);
+			printf("C C.da[%d] %p\n", i, oae);
+	  }
+	}
 }
-
-
-
-
-
-
