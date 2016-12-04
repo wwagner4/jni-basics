@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.*;
 
 public class HelloJni {
 
@@ -50,19 +51,38 @@ public class HelloJni {
 			System.out.println("J obj <- ");
 			System.out.println("-------------------------------------");
 		}
+		{
+			List<D> l = new ArrayList<>();
+			l.add(new D(100));
+			l.add(new D(101));
+			l.add(new D(102));
+			System.out.println("J l -> " + l);
+			h.l(l);
+			System.out.println("J l <- ");
+			System.out.println("-------------------------------------");
+		}
 	}
 
+	// Write 'Hello' to stdout
 	public native void sayHello();
 
+	// Return an integer value
 	public native int r();
 	
+	// Read an integer parameter and write it to stdout
 	public native void a(int a);
 
+	// Read a string parameter and write it to std out
 	public native void s(String a);
 
+	// Read an array of integers and write it to stdout
 	public native void array(int[] a);
 
+	// Read the members of C and write them to stdout
 	public native void obj(C obj);
+
+	// Read a list of objects
+	public native void l(List<D> l);
 
 	
 }

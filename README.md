@@ -2,6 +2,7 @@
 Basic usage of JNI
 
 ## Features
+* Simple HelloWorld. No arguments no return
 * Return a basic type
 * Basic type argument
 * String argument

@@ -96,8 +96,21 @@ JNIEXPORT void JNICALL Java_HelloJni_array(JNIEnv* env, jobject obj, jintArray a
 	}
 }
 
-// Access the fields of an object
 JNIEXPORT void JNICALL Java_HelloJni_obj(JNIEnv* env, jobject, jobject obj) {
 	showC(env, obj);
 }
+
+JNIEXPORT void JNICALL Java_HelloJni_l(JNIEnv* env, jobject, jobject lobj) {
+	printf("C l %p\n", lobj);
+	jclass clazz = env->GetObjectClass(lobj);
+	jmethodID sizeMid = env->GetMethodID(clazz, "size", "()I");
+	jmethodID getMid = env->GetMethodID(clazz, "get", "(I)Ljava/lang/Object;");
+	jint size = env->CallIntMethod(lobj, sizeMid);
+	printf("C l size=%d\n", size);
+	for (int i=0; i<size; i++) {
+		jobject dObj = env->CallObjectMethod(lobj, getMid, i);
+		printf("C l dObj=%p\n", dObj);
+	}	
+}
+
 
