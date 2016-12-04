@@ -9,8 +9,8 @@ Basic usage of JNI
 * Array of basic types argument
 * Object as argument with access of the following members: Basic type, array of basic types, String
 * Access members of an object array
-
-## TODOs
 * Read a list
 * Read a list containing polimorphic elements
+
+## TODOs
 * Different platforms. Linux, Windows 

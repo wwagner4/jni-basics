@@ -61,6 +61,16 @@ public class HelloJni {
 			System.out.println("J l <- ");
 			System.out.println("-------------------------------------");
 		}
+		{
+			List<I> lp = new ArrayList<>();
+			lp.add(new D(100));
+			lp.add(new D1(101, "hallo"));
+			lp.add(new D1(102, "oh no"));
+			System.out.println("J lp -> " + lp);
+			h.lp(lp);
+			System.out.println("J lp <- ");
+			System.out.println("-------------------------------------");
+		}
 	}
 
 	// Write 'Hello' to stdout
@@ -84,8 +94,13 @@ public class HelloJni {
 	// Read a list of objects
 	public native void l(List<D> l);
 
+	// Read a list of polimorph objects
+	public native void lp(List<I> lp);
+
 	
 }
+
+// Some class definitions that might be uses as parameters
 
 class C {
 
@@ -100,8 +115,12 @@ class C {
 	}
 }	
 
-class D {
-	int i;
+interface I {
+	String desc();
+}
+
+class D implements I {
+	protected int i;
 	
 	D(int i) {
 		this.i = i;
@@ -111,4 +130,26 @@ class D {
 		return "D[i=" + i + "]";
 	}
 		
+	public String desc() {
+		return "Hi, I am D";
+	}
+
+}
+
+class D1 extends D implements I {
+	protected String s;
+	
+	D1(int i, String s) {
+		super(i);
+		this.s = s;
+	}
+	
+	public String toString() {
+		return "D1[i=" + i + " s='" + s + "']";
+	}
+		
+	public String desc() {
+		return "Hi, I am D1";
+	}
+
 }
